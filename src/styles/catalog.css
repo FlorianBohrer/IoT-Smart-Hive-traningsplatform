@@ -1,0 +1,241 @@
+/* ============================================================
+   Kurskatalog – Filter-Sidebar + Kurskarten
+   (Aufbau nach Codecademy-Vorbild, Farben aus der AR-Hive-Palette)
+   ============================================================ */
+
+.catalog {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 3rem;
+  width: min(92%, 1200px);
+  margin: 0 auto 6rem;
+  scroll-margin-top: 90px;
+}
+
+/* ---------- Sidebar ---------- */
+
+.catalog-sidebar {
+  align-self: start;
+  position: sticky;
+  top: 90px;
+}
+
+.catalog-filters-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.catalog-filters-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-style: oblique;
+  color: var(--light);
+}
+
+.catalog-clear {
+  padding: 0;
+  font-size: 0.9rem;
+  color: var(--yellow);
+  background: none;
+  border: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.catalog-clear:hover {
+  opacity: 0.8;
+}
+
+.filter-group {
+  margin: 0 0 1.5rem;
+  padding: 0 0 1.5rem;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.filter-label {
+  margin-bottom: 0.75rem;
+  padding: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--light);
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--light);
+  cursor: pointer;
+}
+
+.filter-option input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.filter-checkbox {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--light);
+  border-radius: 5px;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.filter-option:hover .filter-checkbox {
+  border-color: var(--yellow);
+}
+
+.filter-option input:checked + .filter-checkbox {
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23040404' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 13l4 4 10-10'/%3E%3C/svg%3E");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.filter-option input:focus-visible + .filter-checkbox {
+  outline: 3px solid var(--yellow);
+  outline-offset: 2px;
+}
+
+/* ---------- Kopfzeile ---------- */
+
+.catalog-head {
+  margin-bottom: 1.5rem;
+}
+
+.catalog-title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--light);
+}
+
+.catalog-count {
+  margin-left: 0.6rem;
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: normal;
+  color: var(--grey);
+}
+
+/* ---------- Karten-Grid ---------- */
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--surface-strong);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--yellow);
+  box-shadow: var(--shadow-md);
+}
+
+/* Farbband oben (wie "Free course"-Band bei Codecademy) */
+.course-card-band {
+  padding: 0.5rem 1.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--dark);
+  background-color: var(--yellow);
+}
+
+.course-card-band.quiz {
+  background-color: var(--green-light);
+}
+
+.course-card-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 0.6rem;
+  padding: 1.25rem;
+}
+
+.course-card-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  font-style: oblique;
+  line-height: 1.25;
+  color: var(--light);
+}
+
+.course-card-desc {
+  font-size: 0.98rem;
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--grey);
+}
+
+/* Meta-Zeile unten mit gepunkteter Trennlinie */
+.course-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 1.25rem;
+  padding: 0.9rem 0 1.1rem;
+  border-top: 2px dotted var(--border-subtle);
+  font-size: 0.92rem;
+  color: var(--grey);
+}
+
+.course-card-level strong {
+  font-weight: 600;
+  color: var(--yellow);
+}
+
+.catalog-empty {
+  margin: 2rem 0;
+  font-size: 1.05rem;
+  color: var(--light);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 850px) {
+  .catalog {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .catalog-sidebar {
+    position: static;
+    padding: 1.25rem;
+    background-color: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+  }
+
+  .filter-group {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}

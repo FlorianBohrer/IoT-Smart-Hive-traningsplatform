@@ -1,0 +1,356 @@
+/* ============================================================
+   Zick-Zack-Layout – volle Breite, abwechselnd Text/Visual
+   ============================================================ */
+
+.zz-page {
+  padding-bottom: 4rem;
+}
+
+/* ---------- Hero-Band ---------- */
+
+.zz-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 3rem;
+  width: min(92%, 1150px);
+  margin: 0 auto;
+  padding: clamp(3rem, 8vh, 6rem) 0 3.5rem;
+}
+
+.zz-kicker {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.zz-hero-title {
+  margin: 0 0 1rem;
+  font-size: var(--fs-h1);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--light);
+}
+
+.zz-hero-text {
+  margin: 0 0 1.75rem;
+  max-width: 50ch;
+  font-size: clamp(1.05rem, 0.6vw + 1rem, 1.25rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--grey);
+}
+
+.zz-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.zz-hero-meta li {
+  padding: 0.35rem 0.9rem;
+  font-size: 0.88rem;
+  color: var(--grey);
+  background-color: rgba(249, 249, 249, 0.08);
+  border-radius: 999px;
+}
+
+.zz-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ---------- Abschnitts-Bänder ---------- */
+
+.zz-section {
+  padding: clamp(2.5rem, 6vh, 4.5rem) 0;
+}
+
+/* jedes zweite Band dunkler abgesetzt */
+.zz-section.band {
+  background-color: rgba(4, 4, 4, 0.28);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.zz-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  width: min(92%, 1150px);
+  margin: 0 auto;
+}
+
+.zz-section.reverse .zz-content {
+  order: 2;
+}
+
+.zz-section.reverse .zz-visual {
+  order: 1;
+}
+
+.zz-inner.single {
+  grid-template-columns: 1fr;
+  text-align: center;
+  justify-items: center;
+}
+
+/* Inhalt */
+.zz-index {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.zz-index::after {
+  content: '';
+  width: 32px;
+  height: 2px;
+  background-color: var(--yellow);
+  opacity: 0.5;
+}
+
+.zz-title {
+  margin: 0 0 0.9rem;
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--light);
+}
+
+.zz-text {
+  margin: 0;
+  max-width: 56ch;
+  font-size: var(--fs-body);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--grey);
+}
+
+.zz-text + .zz-text {
+  margin-top: 1rem;
+}
+
+.zz-text strong {
+  font-weight: 600;
+  color: var(--yellow);
+}
+
+.zz-content .feature-list {
+  margin-top: 1.25rem;
+}
+
+.zz-content .fuller-button {
+  margin-top: 1.75rem;
+}
+
+/* ---------- Visual-Seite ---------- */
+
+.zz-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* großes Icon-Panel */
+.zz-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1 / 0.85;
+  padding: 2rem;
+  background: linear-gradient(160deg, rgba(250, 209, 69, 0.1), rgba(4, 4, 4, 0.35));
+  border: 1px solid rgba(250, 209, 69, 0.25);
+  border-radius: var(--radius-lg);
+}
+
+.zz-tile-icon {
+  display: flex;
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  color: var(--yellow);
+}
+
+.zz-tile-caption {
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--light);
+}
+
+/* kleine Kacheln (2×2) als Visual */
+.zz-tile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.zz-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  background-color: var(--surface-strong);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.zz-mini:hover {
+  transform: translateY(-3px);
+  border-color: var(--yellow);
+}
+
+.zz-mini-icon {
+  display: flex;
+  font-size: 1.9rem;
+  color: var(--yellow);
+}
+
+.zz-mini-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: oblique;
+  color: var(--yellow);
+}
+
+.zz-mini-label {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--grey);
+}
+
+/* vertikale Pipeline als Visual */
+.zz-pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 360px;
+}
+
+.zz-pipe-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  background-color: var(--surface-strong);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.zz-pipe-step .zz-mini-icon {
+  font-size: 1.5rem;
+}
+
+.zz-pipe-label {
+  font-size: 0.98rem;
+  font-weight: 400;
+  color: var(--light);
+}
+
+.zz-pipe-connector {
+  align-self: center;
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(var(--yellow), rgba(250, 209, 69, 0.2));
+}
+
+/* ---------- CTA-Band am Seitenende ---------- */
+
+.zz-cta {
+  width: min(92%, 820px);
+  margin: clamp(2.5rem, 6vh, 4rem) auto 2rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  text-align: center;
+  background: linear-gradient(160deg, rgba(250, 209, 69, 0.1), rgba(4, 4, 4, 0.4));
+  border: 1px solid rgba(250, 209, 69, 0.3);
+  border-radius: var(--radius-lg);
+}
+
+.zz-cta-title {
+  margin: 0 0 0.6rem;
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--light);
+}
+
+.zz-cta-text {
+  max-width: 48ch;
+  margin: 0 auto 1.6rem;
+  font-size: var(--fs-body);
+  font-weight: 300;
+  color: var(--grey);
+}
+
+.zz-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .zz-hero,
+  .zz-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .zz-section.reverse .zz-content {
+    order: 1;
+  }
+
+  .zz-section.reverse .zz-visual {
+    order: 2;
+  }
+
+  .zz-hero {
+    text-align: center;
+  }
+
+  .zz-hero-text {
+    margin-inline: auto;
+  }
+
+  .zz-hero-meta,
+  .zz-hero-actions {
+    justify-content: center;
+  }
+
+  .zz-tile {
+    max-width: 320px;
+  }
+}

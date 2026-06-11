@@ -1,0 +1,460 @@
+/* ============================================================
+   Sensorübersicht – Icon-Karten-Grid mit Detailansicht
+   ============================================================ */
+
+.sensor-overview {
+  width: min(90%, 75%);
+  margin: 0 auto 5rem;
+}
+
+.main-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(92%, 1000px);
+  margin: 0 auto;
+  padding-bottom: 2.5rem;
+  font-size: var(--fs-h2);
+  font-weight: 400;
+  font-style: oblique;
+  color: var(--light);
+  text-align: center;
+}
+
+.main-title::before,
+.main-title::after {
+  content: '';
+  flex: 1;
+  display: block;
+  margin: 0 1rem;
+  border-bottom: 2px solid rgba(249, 249, 249, 0.25);
+}
+
+/* ---------- Karten-Grid ---------- */
+
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* immer 4 Karten pro Reihe */
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.sensor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 0.75rem;
+  font-family: inherit;
+  color: var(--light);
+  background-color: var(--surface);
+  border: 2px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition),
+    transform var(--transition), box-shadow var(--transition);
+}
+
+.sensor-card:hover {
+  border-color: var(--yellow);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.sensor-card.selected {
+  color: var(--dark);
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+  box-shadow: var(--shadow-glow);
+}
+
+.sensor-card-icon {
+  display: flex;
+  font-size: 2.2rem;
+  color: var(--yellow);
+  transition: color var(--transition);
+}
+
+.sensor-card.selected .sensor-card-icon {
+  color: var(--green-deep);
+}
+
+.sensor-card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  font-style: oblique;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.sensor-card-role {
+  font-size: 0.78rem;
+  font-weight: 300;
+  text-align: center;
+  line-height: 1.3;
+  opacity: 0.85;
+}
+
+/* ---------- Split: Diagramm links, Details rechts ---------- */
+
+.sensor-split {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.sensor-split-diagram {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1rem, 2vw, 1.75rem);
+  background-color: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ---------- Detailansicht ---------- */
+
+.sensor-detail {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background-color: var(--surface-strong);
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--yellow);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.sensor-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.sensor-detail-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2.4rem;
+  color: var(--yellow);
+  background-color: rgba(250, 209, 69, 0.12);
+  border: 2px solid rgba(250, 209, 69, 0.4);
+  border-radius: var(--radius-md);
+}
+
+.sensor-detail-title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--yellow);
+}
+
+.sensor-detail-role {
+  margin: 0.2rem 0 0;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--grey);
+}
+
+/* Messwerte-Tags */
+.sensor-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sensor-tag {
+  padding: 0.3rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--yellow);
+  background-color: rgba(61, 106, 82, 0.6);
+  border: 1px solid rgba(250, 209, 69, 0.35);
+  border-radius: 999px;
+}
+
+.sensor-detail-text {
+  margin: 0 0 1rem;
+  font-size: var(--fs-body);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--light);
+}
+
+.sensor-detail-location {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--grey);
+}
+
+.sensor-detail-location strong {
+  color: var(--yellow);
+  font-weight: 500;
+}
+
+/* ---------- Hive-Diagramm (SVG-Schema) ---------- */
+
+.hive-diagram {
+  margin: 1.75rem 0 0;
+}
+
+.hive-diagram svg {
+  width: 100%;
+  height: auto;
+  font-family: var(--font-base);
+}
+
+.hive-diagram-caption {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: var(--grey);
+}
+
+/* Gehäuse & Zonen */
+.hd-roof {
+  fill: rgba(250, 209, 69, 0.18);
+  stroke: var(--yellow);
+  stroke-width: 1.5;
+}
+
+.hd-body {
+  fill: rgba(4, 4, 4, 0.25);
+  stroke: var(--border-subtle);
+  stroke-width: 1.5;
+}
+
+.hd-floor-line {
+  stroke: rgba(249, 249, 249, 0.15);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+}
+
+.hd-zone-label {
+  fill: var(--grey);
+  font-size: 16px;
+  font-weight: 300;
+  font-style: oblique;
+}
+
+.hd-zone-label.hd-small {
+  font-size: 13px;
+}
+
+.hd-comb {
+  fill: rgba(250, 209, 69, 0.3);
+  stroke: rgba(250, 209, 69, 0.5);
+  stroke-width: 1;
+}
+
+.hd-slot {
+  fill: rgba(4, 4, 4, 0.45);
+  stroke: var(--border-subtle);
+  stroke-width: 1;
+}
+
+/* Komponenten-Boxen */
+.hd-box {
+  fill: rgba(4, 4, 4, 0.55);
+  stroke: rgba(249, 249, 249, 0.35);
+  stroke-width: 1.5;
+  transition: stroke var(--transition), fill var(--transition);
+}
+
+.hd-box-label {
+  fill: var(--light);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.hd-box-sublabel {
+  fill: var(--grey);
+  font-size: 11px;
+  font-weight: 300;
+}
+
+.hd-node {
+  cursor: pointer;
+  outline: none;
+}
+
+.hd-node:hover .hd-box,
+.hd-node:focus-visible .hd-box {
+  stroke: var(--yellow);
+  fill: rgba(250, 209, 69, 0.14);
+}
+
+/* aktuell ausgewählte Komponente im Schema */
+.hd-node.selected .hd-box {
+  stroke: var(--yellow);
+  stroke-width: 2.5;
+  fill: rgba(250, 209, 69, 0.2);
+}
+
+/* Nummern-Marker */
+.hd-marker {
+  fill: var(--yellow);
+  stroke: var(--green-deep);
+  stroke-width: 2;
+}
+
+.hd-marker-text {
+  fill: var(--dark);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Verbindungen */
+.hd-wire {
+  fill: none;
+  stroke: var(--green-light);
+  stroke-width: 2;
+}
+
+.hd-wifi {
+  stroke: var(--yellow);
+  stroke-width: 2;
+  stroke-dasharray: 7 7;
+  opacity: 0.8;
+}
+
+.hd-wifi-arc {
+  fill: none;
+  stroke: var(--yellow);
+  stroke-width: 2;
+  opacity: 0.8;
+}
+
+/* ---------- CTA zur Lernplattform ---------- */
+
+.ar-cta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(92%, 860px);
+  margin: clamp(3rem, 8vh, 6rem) auto;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+  overflow: hidden;
+  background:
+    /* dezente Waben-Textur in der Karte */
+    url("data:image/svg+xml,%3Csvg width='28' height='49' viewBox='0 0 28 49' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fad145' fill-opacity='0.06' fill-rule='evenodd'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(160deg, rgba(4, 4, 4, 0.55), rgba(4, 4, 4, 0.35));
+  background-size: 56px 98px, cover;
+  border: 1px solid rgba(250, 209, 69, 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* weicher, pulsierender Lichtschein hinter dem Inhalt */
+.ar-cta-glow {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  width: 70%;
+  aspect-ratio: 1;
+  translate: -50% 0;
+  background: radial-gradient(circle, rgba(250, 209, 69, 0.22) 0%, transparent 65%);
+  pointer-events: none;
+  animation: ar-cta-pulse 5s ease-in-out infinite;
+}
+
+@keyframes ar-cta-pulse {
+
+  0%,
+  100% {
+    opacity: 0.7;
+    scale: 1;
+  }
+
+  50% {
+    opacity: 1;
+    scale: 1.15;
+  }
+}
+
+.ar-cta-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-bottom: 1.25rem;
+  font-size: 2.4rem;
+  color: var(--yellow);
+  background-color: rgba(250, 209, 69, 0.12);
+  border: 2px solid rgba(250, 209, 69, 0.45);
+  /* Hexagon-Form als Bienen-Bezug */
+  clip-path: polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%);
+}
+
+.ar-cta-kicker {
+  position: relative;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+.ar-cta-title {
+  position: relative;
+  margin: 0 0 0.9rem;
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--light);
+}
+
+.ar-cta-text {
+  position: relative;
+  max-width: 48ch;
+  margin: 0 0 1.75rem;
+  font-size: var(--fs-body);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--grey);
+}
+
+.ar-cta-actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .sensor-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .sensor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sensor-detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}

@@ -1,0 +1,48 @@
+/* ============================================================
+   Scroll-Fortschritt – dezente Leiste am rechten Seitenrand.
+   Kontrast nach Vorbild: dunkler Grund, kaum sichtbare Spur,
+   leuchtender Akzent für die aktuelle Position.
+   ============================================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 50%;
+  right: 22px;
+  translate: 0 -50%;
+  z-index: 900;
+  width: 2px;
+  height: min(55vh, 440px);
+  background-color: rgba(249, 249, 249, 0.12); /* Spur: sehr zurückhaltend */
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.scroll-progress-fill {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, var(--yellow-deep), var(--yellow));
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(250, 209, 69, 0.55); /* leuchtender Akzent */
+  transition: height 0.08s linear;
+}
+
+/* Positions-Punkt am Ende der Füllung */
+.scroll-progress-fill::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  translate: -50% 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--yellow);
+  box-shadow: 0 0 12px rgba(250, 209, 69, 0.8);
+}
+
+/* auf kleinen Screens ausblenden — dort stört der Rand-Indikator */
+@media (max-width: 800px) {
+  .scroll-progress {
+    display: none;
+  }
+}

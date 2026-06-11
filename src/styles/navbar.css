@@ -1,0 +1,148 @@
+/* ============================================================
+   Navbar – sticky, dunkelgrün, gelbe Akzente (Farben original)
+   ============================================================ */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgba(61, 106, 82, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.main-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1.5rem;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-style: oblique;
+  letter-spacing: 0.08em;
+  color: var(--yellow);
+  transition: opacity var(--transition);
+}
+
+.brand:hover {
+  opacity: 0.85;
+}
+
+/* Burger-Button */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 26px;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--light);
+  transition: background-color var(--transition);
+}
+
+.nav-toggle:hover .nav-toggle-bar {
+  background-color: var(--yellow);
+}
+
+/* Menü */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 0.4rem 0;
+  font-size: 1rem;
+  font-style: oblique;
+  letter-spacing: 0.05em;
+  color: var(--light);
+  transition: color var(--transition);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--yellow);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--yellow);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
+}
+
+/* Mobile */
+@media (max-width: 799px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background-color: rgba(61, 106, 82, 0.98);
+    box-shadow: var(--shadow-md);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-menu.open {
+    max-height: 20rem;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+}

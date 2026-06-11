@@ -1,0 +1,86 @@
+/* ============================================================
+   Buttons – gelber Glow-Button (Original-Look, aufgeräumt)
+   ============================================================ */
+
+.fuller-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px; /* Mindest-Touch-Target (Apple HIG) */
+  padding: 0.7em 1.8em;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--light);
+  background-color: rgba(37, 37, 37, 0.4);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition), box-shadow var(--transition),
+    color var(--transition), transform var(--transition), opacity var(--transition);
+}
+
+.fuller-button:hover {
+  transform: translateY(-1px);
+}
+
+.fuller-button:active {
+  transform: translateY(0);
+  opacity: 0.85;
+}
+
+.fuller-button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Primäraktion: gefüllt, gelb */
+.fuller-button.yellow {
+  color: var(--dark);
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+}
+
+.fuller-button.yellow:hover:not(:disabled) {
+  background-color: #ffdd66;
+  border-color: #ffdd66;
+  box-shadow: 0 4px 16px rgba(250, 209, 69, 0.35);
+}
+
+/* Sekundäraktion: ruhig, getönt */
+.fuller-button.quiet {
+  color: var(--yellow);
+  background-color: rgba(26, 26, 24, 0.1);
+
+  border: #ffffff;
+  border-width: 2rem;
+  border-radius: 1rem;
+}
+
+.fuller-button.quiet:hover:not(:disabled) {
+  background-color: rgba(250, 209, 69, 0.2);
+  border: #ffdd66;
+  border-radius: 1rem;
+}
+
+/* Dunkle Variante (z. B. auf gelben Kurs-Karten) */
+.fuller-button.dark {
+  color: var(--yellow);
+  background-color: var(--dark);
+  border-color: var(--dark);
+}
+
+.fuller-button.dark:hover:not(:disabled) {
+  color: var(--dark);
+  background-color: transparent;
+  border-color: var(--dark);
+}
+
+@media (max-width: 600px) {
+  .fuller-button {
+    padding: 0.8em 1.8em;
+    letter-spacing: 0.2em;
+  }
+}

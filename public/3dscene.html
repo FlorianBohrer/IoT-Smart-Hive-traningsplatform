@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
+</head>
+<body style="margin : 0px; overflow: hidden;">
+
+  <a-scene>
+    <a-entity id="rain" particle-system="preset: rain; color: #24CAFF; particleCount: 5000"></a-entity>
+
+    <a-asset-item id="hive-model" src="./src/assets/3dmodels/hive.glb"></a-asset-item>
+
+    <a-entity id="ocean" ocean="density: 20; width: 50; depth: 50; speed: 4"
+              material="color: #9CE3F9; opacity: 0.75; metalness: 0; roughness: 1"
+              rotation="-90 0 0"></a-entity>
+    
+    <a-entity id="sky" geometry="primitive: sphere; radius: 5000"
+              material="shader: gradient; topColor: 235 235 245; bottomColor: 185 185 210"
+              scale="-1 1 1"></a-entity>
+    
+    <a-entity id="light" light="type: ambient; color: #888"></a-entity>
+  </a-scene>
+</body>
+</html> 
+

@@ -1,0 +1,115 @@
+/* ============================================================
+   Home / Hero – Bienenschwarm-Hintergrund mit Pan-Animation
+   ============================================================ */
+
+.screen {
+  position: relative;
+  display: flex;
+  min-height: calc(100vh - 60px);
+  overflow: hidden;
+  background-color: var(--ink);
+}
+
+.screen-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: url('../assets/images/markus/Bienenschwarm1.jpg');
+  background-size: 300%;
+  background-position: 0% 0%;
+  opacity: 0.6;
+  animation: pan-image 35s linear infinite alternate;
+}
+
+.screen::after {
+  /* dunkler Verlauf für bessere Lesbarkeit */
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(180deg,
+      rgba(4, 4, 4, 0.25) 0%,
+      rgba(4, 4, 4, 0.05) 45%,
+      rgba(4, 4, 4, 0.55) 100%);
+}
+
+@keyframes pan-image {
+  0% {
+    background-position: 20% 25%;
+    background-size: 240%;
+  }
+
+  100% {
+    background-position: 75% 70%;
+    background-size: 210%;
+  }
+}
+
+.screen-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  gap: 1.5rem;
+  padding: 2rem;
+  color: var(--light);
+  text-align: center;
+}
+
+.headline {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400;
+  font-style: oblique;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.6);
+}
+
+.screen-user {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* gelbe Deko-Balken über dem Untertitel (Original-Detail) */
+.screen-user::before,
+.screen-user::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  border-radius: 1rem;
+  background-color: var(--yellow);
+  box-shadow: 0 0 16px 4px rgba(250, 209, 69, 0.6);
+}
+
+.screen-user::before {
+  height: 2px;
+  width: 80px;
+  translate: -28px -1rem;
+  opacity: 0.75;
+}
+
+.screen-user::after {
+  height: 5px;
+  width: 30px;
+  translate: 26px calc(-1rem - 1px);
+}
+
+.headline-sub {
+  padding: 1.2em 0 1.4em;
+  font-size: clamp(1.5rem, 4vw, 3.2rem);
+  font-weight: 400;
+  font-style: oblique;
+  line-height: 1.25;
+  letter-spacing: 0.25rem;
+  opacity: 0.9;
+  text-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.5);
+}
+
+.flex-grid-center {
+  display: flex;
+  justify-content: center;
+}
