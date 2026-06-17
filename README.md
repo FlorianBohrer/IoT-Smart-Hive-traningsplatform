@@ -27,6 +27,10 @@ npm run build      # Produktions-Build nach dist/
 npm run preview    # Build lokal testen
 npm run lint       # ESLint
 ```
+<img width="1666" height="1113" alt="image" src="https://github.com/user-attachments/assets/5cdada65-72f7-4be6-9a39-cb53ff6cf6c2" />
+
+
+
 
 ## Projektstruktur
 
