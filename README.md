@@ -1,6 +1,8 @@
 # AR Hive – Interaktive Lernplattform für smarte Imkerei
 
 Eine React-Webanwendung, die Imkern die Technologien des smarten IoT-Bienenstocks vermittelt: Sensorik, KI-gestützte Anomalieerkennung und Augmented Reality.
+Dieses Projekt ist in Zusammenarbeit mit der Arbeitsgruppe KI-Pilot,
+am Umwelt-Campus Birkenfeld entstanden!
 
 ## Features
 
@@ -32,7 +34,7 @@ npm run lint       # ESLint
 public/             statische Dateien (aframe.html, 3D-Modell)
 src/
   components/       Navbar, Router, PageHero, InfoCard, PageTransition
-  pages/            Home, AR, Lernen, Kurse, NoPage
+  pages/            Home, AR, Lernen, Kurse
     subpages/       AI, Anomaly, IOT (Kursinhalte)
     quiz/           QuizPage (gemeinsame Quiz-Logik) + quizData.js
   styles/           CSS mit zentralen Design-Tokens (styles.css)
@@ -41,7 +43,6 @@ src/
 
 ## Farbpalette
 
-Gelb `#fad145`, Grün `#3d6a52` / `#337954`, Dunkel `#040404` / `#333`, Hell `#f9f9f9` – definiert als CSS-Variablen in `src/styles/styles.css`.
+Gelb `#fad145`, Grün `#3d6a52` / `#337954`, Dunkel `#040404` / `#333`, Hell `#f9f9f9` ist definiert als CSS-Variablen in `src/styles/styles.css`.
 # IoT-Smart-Hive-traningsplatform
-# IoT-Smart-Hive-traningsplatform
-# IoT-Smart-Hive-traningsplatform
+
