@@ -8,7 +8,7 @@ am Umwelt-Campus Birkenfeld entstanden!
 
 - **Home** – Einstiegsseite mit animiertem Hero
 - **AR** – AR-Darstellung des IoT-Bienenstocks (A-Frame + AR.js, Hiro-Marker) und Sensor-Akkordeon (Raspberry Pi, Octopus, BME280/680, APDS9960, HX711 u. a.)
-- **Lernen** – Einführung in IoT, Machine Learning (DBSCAN/K-NN) und das Echtzeit-Anomalieerkennungssystem (EAES)
+- **Lernen** – Einführung in IoT, Machine Learning (DBSCAN/K-NN) und das Echtzeit-Anomalieerkennungssystem 
 - **Kurse** – drei Themenkurse: IoT-Grundlagen, Anomalieerkennung, KI/ML
 - **Quizze** – interaktive Wissensquizze mit Fortschrittsanzeige und Auswertung
 
